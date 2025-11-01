@@ -1,0 +1,2 @@
+[console_scripts]
+pynguin-mvp = pynguin_mvp.cli:main

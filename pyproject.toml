@@ -1,0 +1,13 @@
+[project]
+name = "pynguin-mvp"
+version = "0.1.0"
+description = "Minimal Pynguin-like test generator (MVP)"
+requires-python = ">=3.11"
+dependencies = ["pytest"]
+
+[project.scripts]
+pynguin-mvp = "pynguin_mvp.cli:main"
+
+[build-system]
+requires = ["setuptools>=68","wheel"]
+build-backend = "setuptools.build_meta"

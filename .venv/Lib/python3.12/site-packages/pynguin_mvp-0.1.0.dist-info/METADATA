@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: pynguin-mvp
+Version: 0.1.0
+Summary: Minimal Pynguin-like test generator (MVP)
+Requires-Python: >=3.11
+Requires-Dist: pytest
