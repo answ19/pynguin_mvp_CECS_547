@@ -36,7 +36,7 @@ def generate_random_suite(cluster, iters=200, seed=None):
     npos = _num_required_positional_params(t0["sig"])
     safe_args = ", ".join(["1"] * npos) if npos > 0 else ""
     boot_tc = TestCase([Statement(code=f"res = mod.{t0['name']}({safe_args})")])
-    boot_hits = exec_test_case(header + boot_tc.emit_py(), g, target_file, module_name)
+    boot_hits = exec_test_case(header + boot_tc.emit_py(), g, None, module_name)
     if boot_hits:
         _maybe_append_assertion(boot_tc, g)
         suite.cases.append(boot_tc)
@@ -51,7 +51,7 @@ def generate_random_suite(cluster, iters=200, seed=None):
         args_code, arg_names = build_args(t["sig"], t["hints"])
         call_code = f"res = mod.{t['name']}({', '.join(arg_names)})"
         tc = TestCase([*(Statement(code=c) for c in args_code), Statement(code=call_code)])
-        hits = exec_test_case(header + tc.emit_py(), g, target_file, module_name)
+        hits = exec_test_case(header + tc.emit_py(), g, None, module_name)
         if hits - seen:
             _maybe_append_assertion(tc, g)
             suite.cases.append(tc)

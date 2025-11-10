@@ -6,10 +6,12 @@ class Statement:
 
 @dataclass
 class TestCase:
-    statements: list[Statement] = field(default_factory=list)
+    def __init__(self, statements):
+        self.statements = statements  # list[Statement]
 
-    def emit_py(self, indent: str = "    ") -> str:
-        return "".join(f"{indent}{s.code}\n" for s in self.statements)
+    def emit_py(self) -> str:
+        # IMPORTANT: emit raw, executable statements for search-time exec()
+        return "".join(s.code.rstrip() + "\n" for s in self.statements)
 
 @dataclass
 class TestSuite:

@@ -1,10 +1,10 @@
 {
   "module": "triangle",
-  "tests_kept": 1,
-  "covered_lines": 0,
+  "tests_kept": 4,
+  "covered_lines": 8,
   "total_lines": 10,
-  "percent": 0.0,
+  "percent": 80.0,
   "seed": 7,
   "iters": 200,
-  "output_file": "out/test_generated.py"
+  "output_file": "./out/test_generated.py"
 }
