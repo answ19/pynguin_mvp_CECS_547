@@ -6,22 +6,16 @@ This project automatically analyzes Python code, generates tests, measures cover
 🚀 Features
 
 🔍 Automatic Test Discovery: identifies functions and parameters via reflection (inspect).
-
 🎲 Random Test Generation: produces diverse test inputs guided by type hints.
-
 📈 Coverage-Guided Selection: retains only tests that add new line coverage.
-
 🧾 Regression Assertions: automatically inserts assert res == <value>.
-
 ⚙️ Pytest Exporter: writes runnable out/test_generated.py.
-
 🌐 HTML Report: generates out/report.html with coverage summary, progress bar, and full test code.
-
 🧩 Multiple Use Cases: labeled scenarios — boundary, invalid, random, bootstrap — with counts shown in the HTML “Use Cases” table.
-
 💡 Educational & Lightweight: minimal dependencies; demonstrates search-based test generation concepts clearly.
 
 🧰 Project Structure
+
 pynguin_mvp/
 ├── src/pynguin_mvp/
 │   ├── analysis.py           # discovers target functions
@@ -44,6 +38,7 @@ pynguin_mvp/
 ├── screenshots/              # CLI / HTML / coverage screenshots
 ├── README.md
 └── report_final.pdf
+
 
 💻 Installation
 # 1️⃣ clone or open project
@@ -70,7 +65,6 @@ cat out/coverage.json
 # build HTML report
 python scripts/make_report.py out
 
-
 📂 Open out/report.html in your browser for a full visual summary.
 
 📊 Example Output
@@ -92,13 +86,9 @@ def test_boundary_1():
 🌐 HTML Report Preview
 
 Includes:
-
 Coverage badge + progress bar
-
 “Use Cases” summary table
-
 Download button for test_generated.py
-
 Syntax-highlighted test code
 
 🧠 Results Summary
@@ -109,6 +99,7 @@ Lines covered	8 / 10
 Coverage	80 %
 Labels	boundary / invalid / random / bootstrap
 Pytest	✅ All tests passed
+
 🔬 Comparison with Original Pynguin
 Feature	Pynguin (Research Tool)	Pynguin-MVP (This Project)
 Algorithms	DynaMOSA / Whole-Suite / Random	Random + coverage feedback
@@ -118,38 +109,27 @@ Test Labels	None	✅ boundary / invalid / random / bootstrap
 Educational Value	Hard to set up	Easy to explain & extend
 Target	Research benchmarking	Teaching / demo tool
 Example Result	High coverage	80 % coverage on triangle.py
+
 🧩 Future Enhancements
-
 Add branch coverage and mutation testing.
-
 Integrate subprocess sandboxing for untrusted code.
-
 Add Streamlit UI to visualize multiple modules.
-
 Extend use-case labeling for other target functions.
 
 🧾 References
-
 Lukasczyk et al., “Pynguin: Automated Unit Test Generation for Python,” ICSE 2021.
-
 Original Pynguin GitHub
-
 Python Docs — inspect, trace, coverage, pytest
 
 👩‍💻 Author
 
-Anuja S.
-Graduate Student – CECS 547 (Software Testing)
-© 2025 Pynguin-MVP Project
+Anuja Sawant
+Computer Science Graduate Student – CECS 547 Software Maintenance and Reengineering and Reuse © 2025 Pynguin-MVP Project
 
 ✅ Summary
 
 Pynguin-MVP successfully reproduces the core principles of automated test generation while improving on:
-
 Usability: simple CLI, no heavy dependencies.
-
 Visualization: clear HTML report.
-
 Interpretability: labeled test cases for multiple use-case categories.
-
 Coverage: 80 % on sample module with 4 passing tests.
