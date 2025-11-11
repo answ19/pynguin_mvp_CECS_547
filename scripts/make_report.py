@@ -20,6 +20,24 @@ def progress(percent: float) -> str:
   <div style="height:100%;width:{pct:.1f}%;background:#4f46e5"></div>
 </div>'''
 
+def _labels_table(labels: dict) -> str:
+    if not labels:
+        return "<div class='muted'>No labels reported.</div>"
+    rows = "\n".join(
+        f"<tr><td>{html.escape(k)}</td><td style='text-align:right'><b>{v}</b></td></tr>"
+        for k, v in sorted(labels.items())
+    )
+    return f"""
+<table style="width: 320px; border-collapse: collapse">
+  <thead>
+    <tr><th style="text-align:left;border-bottom:1px solid #e5e7eb">Use case</th>
+        <th style="text-align:right;border-bottom:1px solid #e5e7eb">Tests</th></tr>
+  </thead>
+  <tbody>
+    {rows}
+  </tbody>
+</table>"""
+
 def main(out_dir: str = "out"):
     cov_path = os.path.join(out_dir, "coverage.json")
     test_path = os.path.join(out_dir, "test_generated.py")
@@ -38,6 +56,7 @@ def main(out_dir: str = "out"):
     seed = cov.get("seed", "")
     iters = cov.get("iters", "")
     output_file = cov.get("output_file", test_path)
+    labels = cov.get("labels", {})
 
     code = read_text(test_path)
     code_html = html.escape(code)
@@ -93,6 +112,11 @@ def main(out_dir: str = "out"):
   </div>
 
   <div class="card">
+    <h2 style="margin:0 0 8px">Use Cases</h2>
+    {_labels_table(labels)}
+  </div>
+
+  <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
       <h2 style="margin:0">Generated Tests (pytest)</h2>
       <a class="btn" href="{html.escape(output_file)}" download>Download test_generated.py</a>
@@ -100,7 +124,7 @@ def main(out_dir: str = "out"):
     <pre><code>{code_html}</code></pre>
   </div>
 
-  <div class="muted">Open this file directly in your browser: <code>{html.escape(report_path)}</code></div>
+  <div class="muted">Open this file in your browser: <code>{html.escape(report_path)}</code></div>
 </body>
 </html>
 """
@@ -112,3 +136,4 @@ def main(out_dir: str = "out"):
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else "out"
     main(out)
+

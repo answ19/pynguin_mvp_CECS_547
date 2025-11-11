@@ -1,10 +1,15 @@
 {
   "module": "triangle",
-  "tests_kept": 4,
-  "covered_lines": 8,
+  "tests_kept": 5,
+  "covered_lines": 9,
   "total_lines": 10,
-  "percent": 80.0,
+  "percent": 90.0,
   "seed": 7,
   "iters": 200,
-  "output_file": "./out/test_generated.py"
+  "output_file": "./out/test_generated.py",
+  "labels": {
+    "bootstrap": 1,
+    "invalid": 2,
+    "boundary": 2
+  }
 }

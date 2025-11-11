@@ -6,11 +6,12 @@ class Statement:
 
 @dataclass
 class TestCase:
-    def __init__(self, statements):
+    def __init__(self, statements, label: str = "random"):
         self.statements = statements  # list[Statement]
+        self.label = label
 
     def emit_py(self) -> str:
-        # IMPORTANT: emit raw, executable statements for search-time exec()
+        # raw statements for execution and exporting
         return "".join(s.code.rstrip() + "\n" for s in self.statements)
 
 @dataclass

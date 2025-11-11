@@ -20,7 +20,7 @@
 </head>
 <body>
   <h1>Pynguin-MVP Report</h1>
-  <div class="sub">Generated: 2025-11-10 15:49:37</div>
+  <div class="sub">Generated: 2025-11-10 17:12:18</div>
 
   <div class="card">
     <div class="row">
@@ -30,17 +30,17 @@
       </div>
       <div class="box">
         <div class="k">Tests kept</div>
-        <div><b>4</b></div>
+        <div><b>5</b></div>
       </div>
       <div class="box">
         <div class="k">Coverage</div>
         <div style="display:flex;align-items:center;gap:10px">
-          <span style="background:#2ecc71;color:white;padding:4px 8px;border-radius:6px;font-weight:600">80.0%</span>
+          <span style="background:#2ecc71;color:white;padding:4px 8px;border-radius:6px;font-weight:600">90.0%</span>
           
 <div style="background:#eee;border-radius:10px;height:14px;width:260px;overflow:hidden">
-  <div style="height:100%;width:80.0%;background:#4f46e5"></div>
+  <div style="height:100%;width:90.0%;background:#4f46e5"></div>
 </div>
-          <span class="muted">8 / 10 lines</span>
+          <span class="muted">9 / 10 lines</span>
         </div>
       </div>
       <div class="box">
@@ -48,6 +48,22 @@
         <div>seed=<b>7</b> &nbsp; iters=<b>200</b></div>
       </div>
     </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 8px">Use Cases</h2>
+    
+<table style="width: 320px; border-collapse: collapse">
+  <thead>
+    <tr><th style="text-align:left;border-bottom:1px solid #e5e7eb">Use case</th>
+        <th style="text-align:right;border-bottom:1px solid #e5e7eb">Tests</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>bootstrap</td><td style='text-align:right'><b>1</b></td></tr>
+<tr><td>boundary</td><td style='text-align:right'><b>2</b></td></tr>
+<tr><td>invalid</td><td style='text-align:right'><b>2</b></td></tr>
+  </tbody>
+</table>
   </div>
 
   <div class="card">
@@ -59,34 +75,41 @@
 sys.path.insert(0, &#x27;.&#x27;)
 import triangle as mod
 
-def test_case_0():
+def test_bootstrap_0():
     res = mod.classify(1, 1, 1)
     assert res == &#x27;equilateral&#x27;
 
-def test_case_1():
-    arg_a = 6
-    arg_b = 3
-    arg_c = 7
-    res = mod.classify(arg_a, arg_b, arg_c)
-    assert res == &#x27;scalene&#x27;
-
-def test_case_2():
-    arg_a = 1
-    arg_b = 2
-    arg_c = 9
-    res = mod.classify(arg_a, arg_b, arg_c)
+def test_invalid_1():
+    arg_0 = 1
+    arg_1 = 2
+    arg_2 = 9
+    res = mod.classify(arg_0, arg_1, arg_2)
     assert res == &#x27;invalid&#x27;
 
-def test_case_3():
-    arg_a = 10
-    arg_b = 10
-    arg_c = 7
-    res = mod.classify(arg_a, arg_b, arg_c)
+def test_boundary_2():
+    arg_0 = 10
+    arg_1 = 10
+    arg_2 = 7
+    res = mod.classify(arg_0, arg_1, arg_2)
     assert res == &#x27;isosceles&#x27;
+
+def test_boundary_3():
+    arg_0 = 6
+    arg_1 = 3
+    arg_2 = 7
+    res = mod.classify(arg_0, arg_1, arg_2)
+    assert res == &#x27;scalene&#x27;
+
+def test_invalid_4():
+    arg_0 = 0
+    arg_1 = 5
+    arg_2 = 5
+    res = mod.classify(arg_0, arg_1, arg_2)
+    assert res == &#x27;invalid&#x27;
 
 </code></pre>
   </div>
 
-  <div class="muted">Open this file directly in your browser: <code>out/report.html</code></div>
+  <div class="muted">Open this file in your browser: <code>out/report.html</code></div>
 </body>
 </html>

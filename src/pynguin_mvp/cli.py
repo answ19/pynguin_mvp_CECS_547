@@ -7,7 +7,7 @@ from .analysis import load_module, discover_targets, TestCluster
 from .search_random import generate_random_suite
 from .exporter_pytest import export_pytest
 from .exec_cov import exec_test_case, total_executable_lines
-
+from collections import Counter
 
 def main():
     ap = argparse.ArgumentParser(description="Pynguin-MVP: Automated Unit Test Generation Tool")
@@ -29,7 +29,7 @@ def main():
 
     # --- Generate tests ---
     suite, hits = generate_random_suite(cluster, iters=args.iters, seed=args.seed)
-
+    label_counts = Counter(getattr(tc, "label", "random") for tc in suite.cases)
     # --- Determine where to write output ---
     out_path = args.output_path
     if os.path.isdir(out_path) or out_path.endswith(os.sep):
@@ -62,6 +62,7 @@ def main():
         "seed": args.seed,
         "iters": args.iters,
         "output_file": str(out_file),
+        "labels": dict(label_counts),
     }
     report_path.write_text(json.dumps(report, indent=2))
     print(f"🧾 wrote {report_path}")
