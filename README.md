@@ -16,53 +16,56 @@ This project automatically analyzes Python code, generates tests, measures cover
 
 🧰 Project Structure
 
+```plaintext
 pynguin_mvp/
-├── src/pynguin_mvp/
-│   ├── analysis.py           # discovers target functions
-│   ├── ir.py                 # defines Statement, TestCase, TestSuite
-│   ├── generators.py         # random argument builders
-│   ├── exec_cov.py           # lightweight line tracer
-│   ├── search_random.py      # random + coverage feedback loop
-│   ├── exporter_pytest.py    # writes pytest tests with indentation
-│   └── cli.py                # CLI entrypoint
+├── src/
+│   └── pynguin_mvp/
+│       ├── analysis.py
+│       ├── ir.py
+│       ├── generators.py
+│       ├── exec_cov.py
+│       ├── search_random.py
+│       ├── exporter_pytest.py
+│       └── cli.py
 │
 ├── scripts/
-│   └── make_report.py        # builds HTML report (Option A front-end)
+│   └── make_report.py          # Builds out/report.html
 │
 ├── out/
 │   ├── test_generated.py
 │   ├── coverage.json
 │   └── report.html
 │
-├── triangle.py               # example target module
-├── screenshots/              # CLI / HTML / coverage screenshots
-├── README.md
-└── report_final.pdf
+├── triangle.py                 # Sample target module
+├── screenshots/                # Images for PDF/report
+├── report_final.pdf
+└── README.md
 
-
+```
 💻 Installation
-# 1️⃣ clone or open project
+
+#1 Clone or open project
 cd /mnt/c/Users/anuja/pynguin_mvp
 
-# 2️⃣ create & activate virtual environment
+#2 create & activate virtual environment
 python -m venv .venv
 source .venv/bin/activate
 
-# 3️⃣ install dependencies
+#3 install dependencies
 pip install -e .
 pip install pytest coverage reportlab
 
 🧩 Usage
-# generate tests for triangle.py
+#Generate tests for triangle.py
 pynguin-mvp --project-path . --module-name triangle --iters 200 --seed 7 --output-path ./out
 
-# run generated tests
+#Run generated tests
 pytest -q out/test_generated.py
 
-# view coverage JSON
+#View coverage JSON
 cat out/coverage.json
 
-# build HTML report
+#Build HTML report
 python scripts/make_report.py out
 
 📂 Open out/report.html in your browser for a full visual summary.
@@ -92,31 +95,42 @@ Download button for test_generated.py
 Syntax-highlighted test code
 
 🧠 Results Summary
-Metric	Result
-Functions discovered	1 (classify)
-Tests generated	4
-Lines covered	8 / 10
-Coverage	80 %
-Labels	boundary / invalid / random / bootstrap
-Pytest	✅ All tests passed
+```
+| Metric               | Result                                  |
+| -------------------- | --------------------------------------- |
+| Functions discovered | 1 (`classify`)                          |
+| Tests generated      | 4                                       |
+| Lines covered        | 8 / 10                                  |
+| **Coverage**         | **80 %**                                |
+| Labels               | boundary / invalid / random / bootstrap |
+| Pytest               | ✅ All tests passed                      |
+
+```
 
 🔬 Comparison with Original Pynguin
-Feature	Pynguin (Research Tool)	Pynguin-MVP (This Project)
-Algorithms	DynaMOSA / Whole-Suite / Random	Random + coverage feedback
-Dependencies	Heavy (Java bridge + analysis engines)	Pure Python, lightweight
-Front-End	CLI only	CLI + HTML report
-Test Labels	None	✅ boundary / invalid / random / bootstrap
-Educational Value	Hard to set up	Easy to explain & extend
-Target	Research benchmarking	Teaching / demo tool
-Example Result	High coverage	80 % coverage on triangle.py
+```
+| Feature           | Pynguin (Research Tool)                | Pynguin-MVP (This Project)                |
+| ----------------- | -------------------------------------- | ----------------------------------------- |
+| Algorithms        | DynaMOSA / Whole-Suite / Random        | Random + coverage feedback                |
+| Dependencies      | Heavy (Java bridge + analysis engines) | Pure Python, lightweight                  |
+| Front-End         | CLI only                               | CLI + HTML report                         |
+| Test Labels       | None                                   | ✅ boundary / invalid / random / bootstrap |
+| Educational Value | Hard to set up                         | Easy to explain & extend                  |
+| Target            | Research benchmarking                  | Teaching / demo tool                      |
+| Example Result    | High coverage                          | **80 % coverage on triangle.py**          |
+```
 
 🧩 Future Enhancements
 Add branch coverage and mutation testing.
+
 Integrate subprocess sandboxing for untrusted code.
+
 Add Streamlit UI to visualize multiple modules.
+
 Extend use-case labeling for other target functions.
 
 🧾 References
+
 Lukasczyk et al., “Pynguin: Automated Unit Test Generation for Python,” ICSE 2021.
 Original Pynguin GitHub
 Python Docs — inspect, trace, coverage, pytest
